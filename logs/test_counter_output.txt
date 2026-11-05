@@ -1,0 +1,87 @@
+# TASK 2 – COUNTER DEVICE TEST
+
+**1. Nạp driver**
+```bash
+insmod /lib/modules/5.15.0/counter_driver.ko
+lsmod
+```
+Driver được nạp thành công. Major `10`, minor `125`.
+
+**2. Kiểm tra READ**
+```bash
+cat /dev/counter
+```
+Kết quả ba lần đọc:
+```text
+0
+1
+2
+```
+
+**3. Kiểm tra WRITE**
+```bash
+echo 100 > /dev/counter
+cat /dev/counter
+```
+Kết quả: `100`.
+
+**4. Kiểm tra RESET**
+```bash
+echo 0 > /dev/counter
+cat /proc/counter_info
+```
+Counter trở về `0`.
+
+**5. Kiểm tra dữ liệu không hợp lệ**
+```bash
+echo -5 > /dev/counter
+echo abc > /dev/counter
+```
+Cả hai đều trả về `Invalid argument`.
+
+**6. Gỡ driver**
+```bash
+rm /dev/counter
+rmmod counter_driver
+lsmod
+```
+Driver được gỡ thành công.
+
+**Kết luận:** Các chức năng READ, WRITE, RESET, kiểm tra dữ liệu không hợp lệ và `/proc/counter_info` đã được kiểm thử thành công trên QEMU.
+/ # /bin/test_counter.sh
+=== COUNTER DRIVER TEST ===
+counter_driver: loading out-of-tree module taints kernel.
+counter_driver: loaded successfully
+Initial counter:
+Counter Information
+-------------------
+Current counter : 0
+Total reads     : 0
+Total writes    : 0
+Read test:
+0
+1
+2
+Write test:
+Counter Information
+-------------------
+Current counter : 100
+Total reads     : 3
+Total writes    : 1
+Reset test:
+Counter Information
+-------------------
+Current counter : 0
+Total reads     : 3
+Total writes    : 2
+Invalid input test:
+sh: write error: Invalid argument
+sh: write error: Invalid argument
+Final information:
+Counter Information
+-------------------
+Current counter : 0
+Total reads     : 3
+Total writes    : 2
+counter_driver: unloaded
+=== TEST COMPLETED ===
