@@ -1,0 +1,24 @@
+==8856== Memcheck, a memory error detector
+==8856== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==8856== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==8856== Command: ./leaky_app_fixed
+==8856== 
+=== Leaky App – LAB-03 Memory Analysis ===
+[1] Creating 100 records...
+[2] Deleting records (with leak)...
+[3] Processing messages (with leak)...
+ Processed: Message #0: data payload here
+ Processed: Message #10: data payload here
+ Processed: Message #20: data payload here
+ Processed: Message #30: data payload here
+ Processed: Message #40: data payload here
+Program finished – check valgrind output!
+==8856== 
+==8856== HEAP SUMMARY:
+==8856==     in use at exit: 0 bytes in 0 blocks
+==8856==   total heap usage: 352 allocs, 352 frees, 24,196 bytes allocated
+==8856== 
+==8856== All heap blocks were freed -- no leaks are possible
+==8856== 
+==8856== For lists of detected and suppressed errors, rerun with: -s
+==8856== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

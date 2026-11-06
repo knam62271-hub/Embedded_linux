@@ -1,0 +1,61 @@
+The target architecture is set to "arm".
+Breakpoint 1 at 0x702: file buggy_app.c, line 27.
+Starting program: /home/khanh/embedded_lab3/apps/buggy_app 
+⚠️ warning: Selected architecture arm is not compatible with reported target architecture i386:x86-64
+⚠️ warning: Architecture rejected target-supplied description
+⚠️ warning: Unable to find dynamic linker breakpoint function.
+GDB will be unable to debug shared library initializers
+and track explicitly loaded dynamic code.
+❌️ Warning:
+Cannot insert breakpoint -1.
+Cannot access memory at address 0x57c
+Cannot insert breakpoint 1.
+Cannot access memory at address 0x6f8
+
+Remote debugging using localhost:1234
+Reading /lib/ld-linux-armhf.so.3 from remote target...
+⚠️ warning: File transfers from remote targets can be slow. Use "set sysroot" to access files locally instead.
+Reading /lib/ld-linux-armhf.so.3 from remote target...
+Reading symbols from target:/lib/ld-linux-armhf.so.3...
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+0x4081fe58 in _start () from target:/lib/ld-linux-armhf.so.3
+Breakpoint 1 at 0x400702: file buggy_app.c, line 27.
+❌️ The "remote" target does not support "run".  Try "help target" or "continue".
+❌️ Undefined command: "coutinue".  Try "help".
+Continuing.
+Reading /lib/libc.so.6 from remote target...
+
+Breakpoint 1, calculate (a=100000, b=100000) at buggy_app.c:27
+27	    int result = a * b;   /* Bug: a*b co the overflow int */
+$1 = 100000
+$2 = 100000
+$3 = 1082130388
+#0  calculate (a=100000, b=100000) at buggy_app.c:27
+#1  0x004007b4 in main (argc=1, argv=0x407fffd4) at buggy_app.c:51
+r0             0x186a0             100000
+r1             0x186a0             100000
+r2             0x4099152c          1083774252
+r3             0x0                 0
+r4             0x407ffe40          1082129984
+r5             0x40099c            4196764
+r6             0x407fffd4          1082130388
+r7             0x407ffe08          1082129928
+r8             0x4083fe58          1082392152
+r9             0x400729            4196137
+r10            0x41feac            4325036
+r11            0x40840000          1082392576
+r12            0x4                 4
+sp             0x407ffe08          0x407ffe08
+lr             0x4007b5            4196277
+pc             0x400702            0x400702 <calculate+10>
+cpsr           0x600f0030          1611595824
+fpscr          0x0                 0
+fpsid          0x41034070          1090732144
+fpexc          0x40000000          1073741824
+ID_MMFR1       0x40000000          1073741824
+ACTLR_EL2      0x0                 0
+❌️ Quit
