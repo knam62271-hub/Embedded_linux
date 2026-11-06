@@ -1,0 +1,75 @@
+# /bin/test_asgn1.sh
+=== ASGN1 DRIVER TEST SCRIPT ===
+[1] Loading driver...
+asgn1_driver: loading out-of-tree module taints kernel.
+asgn1_driver: initializing module
+asgn1_driver: loaded, major=241
+asgn1_driver: /proc/lab2_info created
+[2] Creating device node...
+[3] Running ioctl test...
+asgn1_driver: device opened
+=== ASGN1 DRIVER TEST ===
+asgn1_driver: ASGN1_SET_MODE = 1
+asgn1_driver: received 19 bytes
+asgn1_driver: sent 19 bytes to user
+Echo mode data: Hello Assignment 01
+asgn1_driver: device released
+asgn1_driver: device opened
+asgn1_driver: ASGN1_SET_MODE = 0
+asgn1_driver: received 17 bytes
+asgn1_driver: sent 25 bytes to user
+Kernel mode data: [KERNEL]Hello Kernel Mode
+asgn1_driver: ASGN1_GET_STATS
+
+--- Driver Statistics ---
+Open count      : 2
+Write count     : 2
+Read count      : 2
+Buffer length   : 25
+Last write size : 17
+asgn1_driver: ASGN1_GET_VERSION
+
+Driver version: asgn1_driver v1.0
+asgn1_driver: ASGN1_RESET_BUFFER
+
+Buffer reset: OK
+Read after reset: 0 bytes
+asgn1_driver: device released
+[4] Checking empty buffer...
+asgn1_driver: device opened
+asgn1_driver: device released
+[5] Removing device node...
+[6] Unloading driver...
+asgn1_driver: module unloaded
+[7] Kernel log...
+  #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 32
+Freeing unused kernel image (initmem) memory: 1024K
+Run /sbin/init as init process
+  with arguments:
+    /sbin/init
+  with environment:
+    HOME=/
+    TERM=linux
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/bus@40000000/bus@40000000:motherboard-bus@40000000/bus@40000000:motherboard-bus@40000000:iofpga@7,00000000/10007000.kmi/serio1/input/input2
+random: fast init done
+asgn1_driver: loading out-of-tree module taints kernel.
+asgn1_driver: initializing module
+asgn1_driver: loaded, major=241
+asgn1_driver: /proc/lab2_info created
+asgn1_driver: device opened
+asgn1_driver: ASGN1_SET_MODE = 1
+asgn1_driver: received 19 bytes
+asgn1_driver: sent 19 bytes to user
+asgn1_driver: device released
+asgn1_driver: device opened
+asgn1_driver: ASGN1_SET_MODE = 0
+asgn1_driver: received 17 bytes
+asgn1_driver: sent 25 bytes to user
+asgn1_driver: ASGN1_GET_STATS
+asgn1_driver: ASGN1_GET_VERSION
+asgn1_driver: ASGN1_RESET_BUFFER
+asgn1_driver: device released
+asgn1_driver: device opened
+asgn1_driver: device released
+asgn1_driver: module unloaded
+=== TEST COMPLETED ===
