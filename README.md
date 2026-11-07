@@ -75,6 +75,19 @@ Embedded_linux/
 #### **Lab 3: Kernel Debugging & Embedded Performance Profiling**
 *   **Remote Debugging:** Established remote debug sessions routing host-side `gdb-multiarch` cross-communication to QEMU target instances running `gdbserver` to trace null-pointer errors, out-of-bound indexes, and overflow bugs.
 *   **Memory Leak Analysis:** Utilized `Valgrind` (Memcheck) on architectural logic paths to isolate dynamic allocation leaks (`definitely lost` vs `indirectly lost`) alongside tracking physical RSS footprint patterns via target `/proc/PID/status`.
+
+## Course Assignments
+
+### **Assignment 1: How to Write a Device Driver**
+*   **Task 1:** Expanded character driver capabilities (`asgn1_driver`) by implementing a distinct `unlocked_ioctl` architecture supporting operations such as buffer resets, runtime state struct streaming (`GET_STATS`), and active operation filtering modes (`KERNEL` vs `ECHO` mode).
+*   **Task 2:** Authored an isolated atomic hardware counter simulator utilizing the simplified Linux `miscdevice` registration layer framework (`misc_register`/`misc_deregister`) enforced by lockless thread-safe `atomic_t` structures.
+*   **Task 3 & 4:** Composed rigorous structural system mapping diagrams, compiled cross-comparisons between Character, Block, and Network drivers, and delivered low-level technical reports on MMU virtual-memory boundaries, MTD system behavior, and VFS file offset processing loops.
+
+### **Assignment 2: Write Embedded Application – Sensor Monitoring System**
+*   **Application Multi-threading:** Built a concurrent C system monitoring program on target consisting of four specialized POSIX threads (`Sensor`, `Processor`, `Alert`, and `Logger`) orchestrating real-time safe system states.
+*   **Inter-Process Communication (IPC):** Handled runtime synchronization dependencies via custom condition-variable thread-safe circular buffers and POSIX message queues (`mq_open`/`mq_receive`) for deterministic asynchronous system exception dispatch.
+*   **Hardware Integration:** Streamed dynamically mapped CSV sensors strings out of an isolated kernel module (`sms_sensor.ko`) utilizing kernel-level pseudo-random distributions, adjustable hardware `ioctl` clock pacing steps, and diagnostic procfs trackers.
+*   **Real-Time Thread Optimizations:** Configured strict execution deadlines inside critical loops by setting FIFO scheduling bounds (`SCHED_FIFO`), deploying atomic thread timeouts via `clock_nanosleep`, and locking physical page faults via `mlockall`.
 *   **Performance Diagnostics:** Profiling of I/O boundaries and runtime computation hotspots by generating granular kernel-space metrics with `strace` summary statistics and hardware performance counter profiling with `perf`.
 *   **Real-Time Latency Analysis:** Calculated quantitative latency spikes using `cyclictest` (stress-loaded via `stress-ng`), constructed empirical latency histograms using `gnuplot`, and analyzed the design benefits of standard kernels versus fully preemptible `PREEMPT_RT` kernels.
 
