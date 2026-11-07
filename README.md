@@ -14,3 +14,42 @@ This repository contains lab exercises, assignments, source code, and testing sc
 | U-Boot | 2022.04 |
 | BusyBox | 1.35.0 |
 | Cross-Compiler | `arm-linux-gnueabihf-` |
+
+## Repository Structure
+
+```text
+Embedded_linux/
+├── Assignment 1/
+│   ├── bao_cao/
+│   ├── logs/
+│   ├── task1_ioctl/
+│   └── task2_misc/
+│
+├── Assignment 2/
+│   ├── Task 1/
+│   ├── Task 2/
+│   ├── Task 3/
+│   ├── Task 4/
+│   ├── bao_cao/
+│   ├── logs/
+│   └── output/
+│
+├── Lab 1/
+│   ├── initramfs/
+│   ├── output/
+│   └── u-boot-2022.04/
+│
+├── Lab 2/
+│   ├── driver/
+│   ├── logs/
+│   ├── output/
+│   └── rootfs/
+│
+├── Lab 3/
+│   ├── apps/
+│   ├── logs/
+│   └── output/
+│ 
+├── .gitignore
+└── README.md
+```
